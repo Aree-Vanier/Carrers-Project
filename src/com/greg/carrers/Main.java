@@ -2,9 +2,11 @@ package com.greg.carrers;
 
 public class Main {
 
+	static Window window;
+	
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+        window = new Window("Carrers Project", 640,480);
 	}
 
 }
+ 

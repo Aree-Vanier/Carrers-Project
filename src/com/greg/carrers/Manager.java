@@ -16,6 +16,7 @@ public class Manager {
     
     public void draw(Graphics g){
     	if(gameStat) game.render(g);
+    	if(menuStat) ;
     }
     
     public void update(){
@@ -31,5 +32,6 @@ public class Manager {
     
     public void mouseUpdate(MouseEvent e){
         if(gameStat) game.mouseUpdate(e);
+    	if(menuStat) ;
     }
 }

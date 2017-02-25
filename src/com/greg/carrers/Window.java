@@ -50,7 +50,15 @@ public class Window extends JComponent implements ActionListener, KeyListener, M
 		window.setLocationRelativeTo(null);
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		window.setResizable(false);
+
 		
+		window.addWindowListener(new java.awt.event.WindowAdapter() {
+		    @Override
+		    public void windowClosing(java.awt.event.WindowEvent windowEvent) {
+		    		Manager.save();
+		            System.exit(0);
+		        }
+		});
 //		window.addKeyListener(new KeyAdapter(){
 //			@Override
 //			public void keyPressed(KeyEvent e){

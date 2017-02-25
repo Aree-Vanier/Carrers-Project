@@ -12,7 +12,6 @@ public class Game {
 	
 	ArrayList<Money> money = new ArrayList<Money>();
 	Random random = new Random();
-	int score = 0;
 	ArrayList<Money> toRemove = new ArrayList<Money>();
 	Font font;
 	
@@ -40,19 +39,26 @@ public class Game {
 		toRemove.clear();
 		
 		g.setColor(Color.black);
-		g.drawString(score+"$", 5, 26);
+		g.drawString(Stats.SCORE+"$", 5, 26);
 	}
 	
 	public void mouseUpdate(MouseEvent e){
-		Rectangle clickRect = new Rectangle();
-		clickRect.x = e.getX()-Stats.CLICK_RADIUS/2;
-		clickRect.y = e.getY()-Stats.CLICK_RADIUS/2;
-		clickRect.width = e.getX()+Stats.CLICK_RADIUS/2;
-		clickRect.height = e.getY()+Stats.CLICK_RADIUS/2;
-		for(Money money: money){
-			if(money.rect.intersects(clickRect)){
+//		Rectangle clickRect = new Rectangle();
+//		clickRect.x = e.getX()-Stats.CLICK_RADIUS/2;
+//		clickRect.y = e.getY()-26-Stats.CLICK_RADIUS/2;
+//		clickRect.width = Stats.CLICK_RADIUS;
+//		clickRect.height = Stats.CLICK_RADIUS;
+//		for(Money money: money){
+//			if(money.rect.intersects(clickRect)){
+//				toRemove.add(money);
+//				Stats.SCORE += Stats.MONEY_VALUE;
+//			}
+//		}
+		for(Money money:money){
+			if(money.rect.contains(e.getX(), e.getY())){
 				toRemove.add(money);
-				score += Stats.MONEY_VALUE;
+				Stats.SCORE += Stats.MONEY_VALUE;
+				if(Stats.SCORE > 2145000000) Stats.SCORE = 2145000000;
 			}
 		}
 	}
